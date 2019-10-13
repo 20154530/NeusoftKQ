@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Card.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
@@ -63,6 +66,8 @@
     <Compile Include="Services\IconNotifySer.cs" />
     <Compile Include="Services\INotifySer.cs" />
     <Compile Include="Services\KQSer.cs" />
+    <Compile Include="ViewModel\MainVM.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\Controls\BlurEffect.cs" />
     <Compile Include="View\Controls\CommandBase.cs" />
     <Compile Include="View\Controls\ContextMenuEx.cs" />
@@ -137,9 +142,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\0.bmp" />
   </ItemGroup>
   <ItemGroup>
@@ -168,6 +170,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\9.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Card.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

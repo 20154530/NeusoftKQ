@@ -18,7 +18,7 @@ namespace NeusoftKQNotify {
         }
 
         void INotifySer.Notify(string title, string msg) {
-            Notify(title, msg);
+            Notify(AppDomain.CurrentDomain.BaseDirectory + "Card.ico", title, msg);
         }
     }
 }

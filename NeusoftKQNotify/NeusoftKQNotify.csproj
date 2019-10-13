@@ -51,6 +51,10 @@
       <Name>NeusoftKQ</Name>
       <Private>False</Private>
     </ProjectReference>
+    <ProjectReference Include="..\ToastCore\ToastCore.csproj">
+      <Project>{18F57AA0-E5ED-4569-A074-A0C622D3D52B}</Project>
+      <Name>ToastCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

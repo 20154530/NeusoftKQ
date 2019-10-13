@@ -43,4 +43,65 @@
                 Value="#2B2B2B" />
     </Style>
 
+    <Style x:Key="WinXTaskBarContextMenuItemStyle"
+           TargetType="ctl:MenuItemEx">
+        <Setter Property="Width"
+                Value="NaN" />
+        <Setter Property="IsCheckable"
+                Value="False" />
+        <Setter Property="FontFamily"
+                Value="{StaticResource Segoe}" />
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalAlignment"
+                Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="LabelFontSize"
+                Value="12.6" />
+        <Setter Property="FontSize"
+                Value="14" />
+        <Setter Property="Height"
+                Value="32" />
+        <Setter Property="Margin"
+                Value="0,1" />
+        <Setter Property="IconWidth"
+                Value="24" />
+        <Setter Property="LabelTextAlignment"
+                Value="Left" />
+        <Setter Property="LabelHorizontalAlignment"
+                Value="Stretch" />
+        <Setter Property="LabelFontWeight"
+                Value="Light" />
+        <Setter Property="IconMargin"
+                Value="8,0" />
+        <Setter Property="LabelFgNormal"
+                Value="White" />
+        <Setter Property="LabelFgOver"
+                Value="White" />
+        <Setter Property="LabelFgPressed"
+                Value="White" />
+        <Setter Property="LabelBgNormal"
+                Value="Transparent" />
+        <Setter Property="LabelBgOver"
+                Value="#22FFFFFF" />
+        <Setter Property="LabelBgPressed"
+                Value="#22FFFFFF" />
+        <Setter Property="IconFgNormal"
+                Value="White" />
+        <Setter Property="IconFgOver"
+                Value="White" />
+        <Setter Property="IconFgPressed"
+                Value="White" />
+        <Setter Property="IconBgNormal"
+                Value="Transparent" />
+        <Setter Property="IconBgOver"
+                Value="#22FFFFFF" />
+        <Setter Property="IconBgPressed"
+                Value="#22FFFFFF" />
+    </Style>
+
+
 </ResourceDictionary>

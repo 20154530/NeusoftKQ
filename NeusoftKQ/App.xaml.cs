@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using NeusoftKQ.Services;
 using NeusoftKQ.View.Controls;
+using NeusoftKQ.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -23,7 +24,8 @@ namespace NeusoftKQ {
     public partial class App : Application {
         private const string ReleaseId = "ReleaseId";
         private const string ProductName = "ProductName";
-        private NotifyIcon icon;
+        private NotifyIcon _icon;
+        private ContextMenuEx _cmenu;
 
         /// <summary>
         /// 
@@ -70,11 +72,10 @@ namespace NeusoftKQ {
         /// </summary>
         /// <param name="e"></param>
         protected override void OnStartup(StartupEventArgs e) {
-            if (!frameworkversioncheck())
+            if (frameworkversioncheck())
                 initWinXNotify();
             else
                 initGeneralNotify();
-
 
             base.OnStartup(e);
         }
@@ -87,25 +88,36 @@ namespace NeusoftKQ {
             AppDomain.CurrentDomain.Load(notifymod.FullName);
             NotifyManager = (INotifySer)AppDomain.CurrentDomain.CreateInstanceAndUnwrap(notifymod.FullName, "NeusoftKQNotify.NeusoftKQNotifySer");
             NotifyManager.Init(nameof(NeusoftKQ));
+            _icon = new NotifyIcon {
+                Visible = true,
+                Text = "Neusoft Onkey KQ",
+                Icon = new System.Drawing.Icon(AppDomain.CurrentDomain.BaseDirectory + "Card.ico"),
+                ContextMenuStrip = new ContextMenuStrip()
+            };
+            _icon.MouseClick += Icon_Click;
         }
 
         /// <summary>
         /// 创建发出一般样式通知的组件
         /// </summary>
         private void initGeneralNotify() {
-            NotifyManager = (INotifySer)new IconNotifySer(icon);
+            NotifyManager = (INotifySer)new IconNotifySer(_icon);
             NotifyManager.Init(null);
-            icon.MouseClick += Icon_Click;
+            _icon.MouseClick += Icon_Click;
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        private ContextMenuEx createContextMenu() {
-            ContextMenuEx menu = new ContextMenuEx { Style = Current.Resources["WinXTaskBarContextMenuStyle"] as Style };
+        private void createContextMenu() {
+            Style winxmenu = Current.Resources["WinXTaskBarContextMenuItemStyle"] as Style;
+            _cmenu = new ContextMenuEx { Style = Current.Resources["WinXTaskBarContextMenuStyle"] as Style };
+            MenuItemEx exit = new MenuItemEx { Style = winxmenu, LabelString = "退出", Command = MainVM.Singleton.Operation, CommandParameter = "CMD_EXIT" };
+            MenuItemEx about = new MenuItemEx { Style = winxmenu, LabelString = "关于", Command = MainVM.Singleton.Operation, CommandParameter = "CMD_ABOUT" };
 
-            return menu;
+            _cmenu.Items.Add(about);
+            _cmenu.Items.Add(exit);
         }
 
         /// <summary>
@@ -118,6 +130,11 @@ namespace NeusoftKQ {
                 case MouseButtons.Left:
                     break;
                 case MouseButtons.Right:
+                    if (_cmenu is null)
+                        createContextMenu();
+                    if (_cmenu.IsOpen)
+                        return;
+                    _cmenu.IsOpen = true;
                     break;
             }
         }
