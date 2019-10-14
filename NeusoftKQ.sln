@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAccessorCore", "WebAcces
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToastCore", "ToastCore\ToastCore.csproj", "{18F57AA0-E5ED-4569-A074-A0C622D3D52B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KQSerCore", "KQSerCore\KQSerCore.csproj", "{7432FB13-33F0-4ABD-9E21-5A56DDEAB3D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{18F57AA0-E5ED-4569-A074-A0C622D3D52B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18F57AA0-E5ED-4569-A074-A0C622D3D52B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18F57AA0-E5ED-4569-A074-A0C622D3D52B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7432FB13-33F0-4ABD-9E21-5A56DDEAB3D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7432FB13-33F0-4ABD-9E21-5A56DDEAB3D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7432FB13-33F0-4ABD-9E21-5A56DDEAB3D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7432FB13-33F0-4ABD-9E21-5A56DDEAB3D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

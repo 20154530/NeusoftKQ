@@ -1,9 +1,12 @@
-﻿using System;
+﻿
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
+
 namespace AforgeNumVerify.AForge.Core {
     public class UnsupportedImageFormatException : ArgumentException {
         public UnsupportedImageFormatException() { }
@@ -2668,4 +2671,5 @@ namespace AforgeNumVerify.AForge.Core {
             }
         }
     }
+
 }

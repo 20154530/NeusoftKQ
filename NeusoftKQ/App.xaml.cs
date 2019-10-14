@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic.Devices;
+﻿using KQSerCore;
+using Microsoft.VisualBasic.Devices;
 using Microsoft.Win32;
 using NeusoftKQ.Services;
 using NeusoftKQ.View.Controls;
@@ -15,6 +16,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
+using WebAccessorCore.ApiClient;
 using Application = System.Windows.Application;
 
 namespace NeusoftKQ {
@@ -139,12 +141,8 @@ namespace NeusoftKQ {
             }
         }
 
-        public App() {
-            AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
-        }
-
         private Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args) {
-            string[] assemblyloc = NeusoftKQ.Properties.Settings.Default.Loacation.Split(';');
+            string[] assemblyloc = NeusoftKQ.Properties.Resources.Location.Split(';');
             Match mc = Regex.Match(args.Name, "(.+?),");
             string name = mc.Groups[1].Value;
             string file = $"{AppDomain.CurrentDomain.BaseDirectory}{name}.dll";
@@ -157,5 +155,10 @@ namespace NeusoftKQ {
             }
             return null;
         }
+
+        public App() {
+            AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
+        }
+
     }
 }

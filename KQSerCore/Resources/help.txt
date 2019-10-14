@@ -1,0 +1,11 @@
+kqsercore [-cmd]
+
+commands like  :
+
+-h             :    show this help 
+-u             :    show current user
+-u user        :    set username as user
+-p             :    show current password
+-p password    :    set password as password
+-dokq          :    access kq.neusoft.com and finish kq action
+                 

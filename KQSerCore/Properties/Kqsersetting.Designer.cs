@@ -8,16 +8,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NeusoftKQ.Properties {
+namespace KQSerCore.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.3.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+    internal sealed partial class Kqsersetting : global::System.Configuration.ApplicationSettingsBase {
         
-        private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
+        private static Kqsersetting defaultInstance = ((Kqsersetting)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Kqsersetting())));
         
-        public static Settings Default {
+        public static Kqsersetting Default {
             get {
                 return defaultInstance;
             }
@@ -25,13 +25,25 @@ namespace NeusoftKQ.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Resources")]
-        public string Loacation {
+        [global::System.Configuration.DefaultSettingValueAttribute("yangjieming")]
+        public string user {
             get {
-                return ((string)(this["Loacation"]));
+                return ((string)(this["user"]));
             }
             set {
-                this["Loacation"] = value;
+                this["user"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Y_Theta24680")]
+        public string password {
+            get {
+                return ((string)(this["password"]));
+            }
+            set {
+                this["password"] = value;
             }
         }
     }

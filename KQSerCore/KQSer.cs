@@ -1,11 +1,7 @@
-﻿///------------------------------------------------------------------------------
-/// @ Y_Theta
-///------------------------------------------------------------------------------
-using AforgeNumVerify;
+﻿using AforgeNumVerify;
 using AforgeNumVerify.AForge.Core;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,7 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using WebAccessorCore.ApiClient;
 
-namespace NeusoftKQ.Services {
+namespace KQSerCore {
     /// <summary>
     /// 考勤服务
     /// </summary>
@@ -39,7 +35,7 @@ namespace NeusoftKQ.Services {
         private string[] pregetaccesskey() {
             try {
                 string[] keylist = new string[5];
-                var result = _client.Get("http://kq.neusoft.com/",null);
+                var result = _client.Get("http://kq.neusoft.com/", null);
                 var col = Regex.Matches(result, @"<input(.+)>");
                 if (col.Count == 9) {
                     keylist[0] = Regex.Match(col[2].Value, @"name=""(.+?)""").Groups[1].Value;
@@ -64,16 +60,16 @@ namespace NeusoftKQ.Services {
                 var verimg = _client.Get(verurl);
                 Bitmap tbp = Main.PreProcess(new Bitmap(verimg, false));
                 var templateList = new List<Bitmap> {
-                Properties.Resources._0,
-                Properties.Resources._1,
-                Properties.Resources._2,
-                Properties.Resources._3,
-                Properties.Resources._4,
-                Properties.Resources._5,
-                Properties.Resources._6,
-                Properties.Resources._7,
-                Properties.Resources._8,
-                Properties.Resources._9,
+                Properties.Kqres._0,
+                Properties.Kqres._1,
+                Properties.Kqres._2,
+                Properties.Kqres._3,
+                Properties.Kqres._4,
+                Properties.Kqres._5,
+                Properties.Kqres._6,
+                Properties.Kqres._7,
+                Properties.Kqres._8,
+                Properties.Kqres._9,
             };
                 List<Bitmap> tlbs = Main.ToResizeAndCenterIt(Main.Crop_X(Main.Crop_Y(tbp)));
                 ExhaustiveTemplateMatching templateMatching = new ExhaustiveTemplateMatching(0.9f);
@@ -164,6 +160,16 @@ namespace NeusoftKQ.Services {
         /// </summary>
         /// <returns></returns>
         public string DoKQ() {
+            return DoKQ(Properties.Kqsersetting.Default.user, Properties.Kqsersetting.Default.password);
+        }
+
+        /// <summary>
+        /// 执行考勤
+        /// </summary>
+        /// <param name="user">用户名</param>
+        /// <param name="pwd">密码</param>
+        /// <returns></returns>
+        public string DoKQ(string user ,string pwd) {
             string status = null;
             string[] keylist = pregetaccesskey();
             string verify = pregetverifycode();
@@ -172,8 +178,8 @@ namespace NeusoftKQ.Services {
                 new KeyValuePair<string, string>("neusoft_attendance_online",""),
                 new KeyValuePair<string, string>(keylist[0],""),
                 new KeyValuePair<string, string>("neusoft_key",keylist[1]),
-                new KeyValuePair<string, string>(keylist[2],ConfigurationManager.AppSettings["user"]),
-                new KeyValuePair<string, string>(keylist[3],ConfigurationManager.AppSettings["pwd"]),
+                new KeyValuePair<string, string>(keylist[2],user),
+                new KeyValuePair<string, string>(keylist[3],pwd),
                 new KeyValuePair<string, string>(keylist[4],verify),
             });
             var verkey = Regex.Match(record, @"<.+""currentempoid"".+value=""(.+)"">");
