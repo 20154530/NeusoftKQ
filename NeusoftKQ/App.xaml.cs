@@ -26,8 +26,10 @@ namespace NeusoftKQ {
     public partial class App : Application {
         private const string ReleaseId = "ReleaseId";
         private const string ProductName = "ProductName";
+        private readonly string[] Pathcollection = new string[] { "Resources" };
         private NotifyIcon _icon;
         private ContextMenuEx _cmenu;
+        private PopupBase _ppanel;
 
         /// <summary>
         /// 
@@ -109,7 +111,7 @@ namespace NeusoftKQ {
         }
 
         /// <summary>
-        /// 
+        /// 创建右键菜单
         /// </summary>
         /// <returns></returns>
         private void createContextMenu() {
@@ -123,6 +125,14 @@ namespace NeusoftKQ {
         }
 
         /// <summary>
+        /// 创建弹出菜单
+        /// </summary>
+        private void createPopupPanel() {
+            _ppanel = new PopupBase { Style = Current.Resources["AreaPopup"] as Style };
+            _ppanel.Child = new KQPanel();
+        }
+
+        /// <summary>
         /// 任务栏图标单击
         /// </summary>
         /// <param name="sender"></param>
@@ -130,6 +140,11 @@ namespace NeusoftKQ {
         private void Icon_Click(object sender, MouseEventArgs e) {
             switch (e.Button) {
                 case MouseButtons.Left:
+                    if (_ppanel is null)
+                        createPopupPanel();
+                    if (_ppanel.IsOpen)
+                        return;
+                    _ppanel.IsOpen = true;
                     break;
                 case MouseButtons.Right:
                     if (_cmenu is null)
@@ -142,7 +157,7 @@ namespace NeusoftKQ {
         }
 
         private Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args) {
-            string[] assemblyloc = NeusoftKQ.Properties.Resources.Location.Split(';');
+            string[] assemblyloc = Pathcollection;
             Match mc = Regex.Match(args.Name, "(.+?),");
             string name = mc.Groups[1].Value;
             string file = $"{AppDomain.CurrentDomain.BaseDirectory}{name}.dll";

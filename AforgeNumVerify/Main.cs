@@ -187,5 +187,6 @@ namespace AforgeNumVerify {
 
             return resizeList;
         }
+
     }
 }

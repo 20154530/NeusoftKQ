@@ -2,6 +2,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:ctl="clr-namespace:NeusoftKQ.View.Controls">
 
+    <Visibility x:Key="Visible">Visible</Visibility>
+
+    <Visibility x:Key="Hidden">Hidden</Visibility>
+
+    <FontFamily x:Key="Segoe">pack://application:,,,/NeusoftKQ;component/Resources/segmdl2.ttf#Segoe MDL2 Assets</FontFamily>
+
     <Style x:Key="AreaPopup"
            TargetType="ctl:PopupBase">
         <Setter Property="AllowsTransparency"
@@ -102,5 +108,56 @@
                 Value="#22FFFFFF" />
     </Style>
 
+    <Style x:Key="kqpanel_button"
+           TargetType="ctl:FIconButton">
+        <Setter Property="LabelVisibility"
+                Value="Collapsed" />
+        <Setter Property="FontSize"
+                Value="14" />
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="Height"
+                Value="24" />
+        <Setter Property="Width"
+                Value="24" />
+        <Setter Property="FontFamily"
+                Value="{DynamicResource Segoe}" />
+        <Setter Property="IconFgNormal"
+                Value="#CCCCCC" />
+        <Setter Property="IconFgOver"
+                Value="#FFFFFF" />
+        <Setter Property="IconFgPressed"
+                Value="#AAAAAA" />
+        <Setter Property="IconBgNormal"
+                Value="Transparent" />
+        <Setter Property="IconBgOver"
+                Value="Transparent" />
+        <Setter Property="IconBgPressed"
+                Value="Transparent" />
+    </Style>
+
+    <Style x:Key="kqpanel_button_KQ"
+           TargetType="ctl:FIconButton">
+        <Setter Property="IconVisibility"
+                Value="Collapsed" />
+        <Setter Property="ToolTipStyle"
+                Value="{x:Null}" />
+        <Setter Property="ToolTipTextStyle"
+                Value="{x:Null}" />
+        <Setter Property="LabelFgNormal"
+                Value="#EFEFEF" />
+        <Setter Property="LabelFgOver"
+                Value="#EFEFEF" />
+        <Setter Property="LabelFgPressed"
+                Value="#f0f0f0" />
+        <Setter Property="LabelBgNormal"
+                Value="#70000000" />
+        <Setter Property="LabelBgOver"
+                Value="#90000000" />
+        <Setter Property="LabelBgPressed"
+                Value="#70000000" />
+        <Setter Property="LabelFontSize"
+                Value="14" />
+    </Style>
 
 </ResourceDictionary>

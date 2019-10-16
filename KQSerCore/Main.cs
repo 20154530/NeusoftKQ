@@ -12,8 +12,6 @@ using System.Text;
 using System.Threading.Tasks;
 using WebAccessorCore.ApiClient;
 
-
-
 namespace KQSerCore {
 
     public class MainC {

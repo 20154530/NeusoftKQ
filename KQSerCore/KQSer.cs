@@ -164,13 +164,21 @@ namespace KQSerCore {
         }
 
         /// <summary>
+        /// 查看考勤记录
+        /// </summary>
+        /// <returns></returns>
+        public string ViewKQ() {
+            return DoKQ(Properties.Kqsersetting.Default.user, Properties.Kqsersetting.Default.password, false);
+        }
+
+        /// <summary>
         /// 执行考勤
         /// </summary>
         /// <param name="user">用户名</param>
         /// <param name="pwd">密码</param>
         /// <returns></returns>
-        public string DoKQ(string user ,string pwd) {
-            string status = null;
+        public string DoKQ(string user, string pwd, bool login = true) {
+            string status = "";
             string[] keylist = pregetaccesskey();
             string verify = pregetverifycode();
             var record = _client.Post("http://kq.neusoft.com/login.jsp", new KeyValuePair<string, string>[] {
@@ -182,13 +190,22 @@ namespace KQSerCore {
                 new KeyValuePair<string, string>(keylist[3],pwd),
                 new KeyValuePair<string, string>(keylist[4],verify),
             });
-            var verkey = Regex.Match(record, @"<.+""currentempoid"".+value=""(.+)"">");
-            _client.Post("http://kq.neusoft.com/record.jsp", new KeyValuePair<string, string>[] {
-                new KeyValuePair<string, string>("currentempoid",verkey.Groups[1].Value),
-                new KeyValuePair<string, string>("browser","Chrome"),
-            });
+            var verkey = Regex.Match(record, @"<tbody>([\r\n\s\S]*?)</tbody>", RegexOptions.Multiline);
+            if (login)
+                _client.Post("http://kq.neusoft.com/record.jsp", new KeyValuePair<string, string>[] {
+                    new KeyValuePair<string, string>("currentempoid",verkey.Groups[1].Value),
+                    new KeyValuePair<string, string>("browser","Chrome"),
+                });
+            string kqitem = verkey.Groups[1].Value;
+            MatchCollection time = Regex.Matches(kqitem, @"<td>(\d\d:\d\d:\d\d)</td>([\r\n\s\S]*?)</tr>",RegexOptions.Multiline);
+            int index = 1;
+            foreach(Match m in time) {
+                status += index++ +"  -  "+ m.Groups[1].Value + "\n";
+            }
             return status;
         }
+
+
         #endregion
 
         #region Constructors

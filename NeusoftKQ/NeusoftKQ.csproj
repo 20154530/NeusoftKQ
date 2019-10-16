@@ -68,11 +68,14 @@
     <Compile Include="ViewModel\MainVM.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\Controls\BlurEffect.cs" />
+    <Compile Include="View\Controls\VisibilityConverter.cs" />
     <Compile Include="View\Controls\CommandBase.cs" />
     <Compile Include="View\Controls\ContextMenuEx.cs" />
     <Compile Include="View\Controls\DllImportMethods.cs" />
+    <Compile Include="View\Controls\FIconButton.cs" />
     <Compile Include="View\Controls\HandleHelper.cs" />
     <Compile Include="View\Controls\IFontExtension.cs" />
+    <Compile Include="View\Controls\LocateMode.cs" />
     <Compile Include="View\Controls\MenuItemEx.cs" />
     <Compile Include="View\Controls\PopupBase.cs" />
     <Compile Include="View\Controls\PopupRelativeMode.cs" />
@@ -133,34 +136,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\0.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\1.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\2.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\3.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\4.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\5.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\6.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\7.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\8.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\9.bmp" />
+    <Resource Include="Resources\segmdl2.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Card.ico">
